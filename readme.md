@@ -68,7 +68,7 @@ python run.py
 * app\logs ---> folder log pencatatan error yang terjadi pada saat aplikasi berjalan
 * app\models ---> folder untuk menyimpan skema tabel dalam database, tabel-tabel tersebut dapat dilihat di todo.py dan user.py
 * app\routes ---> folder untuk konfigurasi routing endpoint, seluruh link endpoint dapat dilihat di file todo.py, todostatus.py, user.py dan users.py
-* app\db ---> folder untuk menyimpan backup database postgresql
+* db ---> folder untuk menyimpan backup database postgresql
 * static\img ---> folder untuk menyimpan image
 * migrations ---> folder yang digunakan untuk melakukan migrasi database menggunakan alembic
 * test ---> folder untuk script unittest endpoint menggunakan pytest
