@@ -59,6 +59,7 @@ Aplikasi backend sebagai service untuk jembatan ke database dalam proses menamba
 ```
 python -m venv venv
 .\venv\scripts\activate
+pip install -r requirements.txt
 python run.py
 ```
 
