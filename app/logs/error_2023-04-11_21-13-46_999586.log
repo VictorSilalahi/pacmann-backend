@@ -1,0 +1,358 @@
+2023-04-11T21:25:49.977855+0700 ERROR An error has been caught in function 'dispatch_request', process 'MainProcess' (19948), thread 'Thread-32 (process_request_thread)' (7260):
+Traceback (most recent call last):
+
+  File "C:\Python310\lib\threading.py", line 966, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000001728C06C820>
+    └ <Thread(Thread-32 (process_request_thread), started daemon 7260)>
+
+  File "C:\Python310\lib\threading.py", line 1009, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x000001728C06C550>
+    └ <Thread(Thread-32 (process_request_thread), started daemon 7260)>
+
+  File "C:\Python310\lib\threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(Thread-32 (process_request_thread), started daemon 7260)>
+    │    │        │    └ (<socket.socket fd=924, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    │        └ <Thread(Thread-32 (process_request_thread), started daemon 7260)>
+    │    └ <bound method ThreadingMixIn.process_request_thread of <werkzeug.serving.ThreadedWSGIServer object at 0x000001728E3B1420>>
+    └ <Thread(Thread-32 (process_request_thread), started daemon 7260)>
+
+  File "C:\Python310\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+    │    │              │        └ ('127.0.0.1', 55354)
+    │    │              └ <socket.socket fd=924, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=(...
+    │    └ <function BaseServer.finish_request at 0x000001728C193E20>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001728E3B1420>
+
+  File "C:\Python310\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    │    │                   │        │               └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001728E3B1420>
+    │    │                   │        └ ('127.0.0.1', 55354)
+    │    │                   └ <socket.socket fd=924, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=(...
+    │    └ <class 'werkzeug.serving.WSGIRequestHandler'>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001728E3B1420>
+
+  File "C:\Python310\lib\socketserver.py", line 747, in __init__
+    self.handle()
+    │    └ <function WSGIRequestHandler.handle at 0x000001728C7E3520>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000001728E3B3D30>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\werkzeug\serving.py", line 361, in handle
+    super().handle()
+
+  File "C:\Python310\lib\http\server.py", line 425, in handle
+    self.handle_one_request()
+    │    └ <function BaseHTTPRequestHandler.handle_one_request at 0x000001728C75BE20>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000001728E3B3D30>
+
+  File "C:\Python310\lib\http\server.py", line 413, in handle_one_request
+    method()
+    └ <bound method WSGIRequestHandler.run_wsgi of <werkzeug.serving.WSGIRequestHandler object at 0x000001728E3B3D30>>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\werkzeug\serving.py", line 333, in run_wsgi
+    execute(self.server.app)
+    │       │    │      └ <werkzeug.debug.DebuggedApplication object at 0x000001728E375BA0>
+    │       │    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001728E3B1420>
+    │       └ <werkzeug.serving.WSGIRequestHandler object at 0x000001728E3B3D30>
+    └ <function WSGIRequestHandler.run_wsgi.<locals>.execute at 0x000001728E3BFAC0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\werkzeug\serving.py", line 322, in execute
+    for data in application_iter:
+                └ <generator object DebuggedApplication.debug_application at 0x000001728E3DDD90>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\werkzeug\debug\__init__.py", line 329, in debug_application
+    app_iter = self.app(environ, start_response)
+               │    │   │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000001728E3BFA30>
+               │    │   └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=924>, 'wsgi.errors': <_io.TextIOWr...
+               │    └ <Flask 'run'>
+               └ <werkzeug.debug.DebuggedApplication object at 0x000001728E375BA0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask\app.py", line 2551, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000001728E3BFA30>
+           │    │        └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=924>, 'wsgi.errors': <_io.TextIOWr...
+           │    └ <function Flask.wsgi_app at 0x000001728CB63D90>
+           └ <Flask 'run'>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x000001728CB63250>
+               └ <Flask 'run'>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x000001728CB631C0>
+         └ <Flask 'run'>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           │    │           │    │              │    │            └ {}
+           │    │           │    │              │    └ 'todoroute'
+           │    │           │    │              └ <Rule '/api/todo' (OPTIONS, PUT, DELETE, POST, GET, HEAD) -> todoroute>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x000001728E17A9E0>, 'usersroute': <function View.as_view.<locals>.v...
+           │    │           └ <Flask 'run'>
+           │    └ <function Flask.ensure_sync at 0x000001728CB63520>
+           └ <Flask 'run'>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_restful\__init__.py", line 467, in wrapper
+    resp = resource(*args, **kwargs)
+           │         │       └ {}
+           │         └ ()
+           └ <function View.as_view.<locals>.view at 0x000001728E36F2E0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask\views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           │                       │    │                   └ {}
+           │                       │    └ <function Resource.dispatch_request at 0x000001728CB7B130>
+           │                       └ <app.routes.todo.TodoRoute object at 0x000001728E575F60>
+           └ <Flask 'run'>
+
+> File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_restful\__init__.py", line 582, in dispatch_request
+    resp = meth(*args, **kwargs)
+           │     │       └ {}
+           │     └ ()
+           └ <bound method TodoRoute.get of <app.routes.todo.TodoRoute object at 0x000001728E575F60>>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_jwt_extended\view_decorators.py", line 153, in decorator
+    verify_jwt_in_request(optional, fresh, refresh, locations, verify_type)
+    │                     │         │      │        │          └ True
+    │                     │         │      │        └ None
+    │                     │         │      └ False
+    │                     │         └ False
+    │                     └ False
+    └ <function verify_jwt_in_request at 0x000001728E159B40>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_jwt_extended\view_decorators.py", line 89, in verify_jwt_in_request
+    jwt_data, jwt_header, jwt_location = _decode_jwt_from_request(
+                                         └ <function _decode_jwt_from_request at 0x000001728E159FC0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_jwt_extended\view_decorators.py", line 323, in _decode_jwt_from_request
+    decoded_token = decode_token(encoded_token, csrf_token)
+                    │            │              └ None
+                    │            └ 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjgxMjIxMzMzLCJqdGkiOiIzOGMyMWU2Ny1hODNkLTRjYWMtYWE4My02ZTB...
+                    └ <function decode_token at 0x000001728E158550>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_jwt_extended\utils.py", line 127, in decode_token
+    return jwt_manager._decode_jwt_from_config(encoded_token, csrf_value, allow_expired)
+           │           │                       │              │           └ False
+           │           │                       │              └ None
+           │           │                       └ 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjgxMjIxMzMzLCJqdGkiOiIzOGMyMWU2Ny1hODNkLTRjYWMtYWE4My02ZTB...
+           │           └ <function JWTManager._decode_jwt_from_config at 0x000001728E159750>
+           └ <flask_jwt_extended.jwt_manager.JWTManager object at 0x000001728E14E020>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_jwt_extended\jwt_manager.py", line 553, in _decode_jwt_from_config
+    return _decode_jwt(**kwargs, allow_expired=allow_expired)
+           │             │                     └ False
+           │             └ {'algorithms': ['HS256'], 'audience': None, 'csrf_value': None, 'encoded_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcm...
+           └ <function _decode_jwt at 0x000001728E143EB0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_jwt_extended\tokens.py", line 94, in _decode_jwt
+    decoded_token = jwt.decode(
+                    │   └ <bound method PyJWT.decode of <jwt.api_jwt.PyJWT object at 0x000001728E116CB0>>
+                    └ <module 'jwt' from 'D:\\JOBS\\pacmann\\ujian\\backend\\venv\\lib\\site-packages\\jwt\\__init__.py'>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\jwt\api_jwt.py", line 168, in decode
+    decoded = self.decode_complete(
+              │    └ <function PyJWT.decode_complete at 0x000001728E10FEB0>
+              └ <jwt.api_jwt.PyJWT object at 0x000001728E116CB0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\jwt\api_jwt.py", line 136, in decode_complete
+    self._validate_claims(
+    │    └ <function PyJWT._validate_claims at 0x000001728E140040>
+    └ <jwt.api_jwt.PyJWT object at 0x000001728E116CB0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\jwt\api_jwt.py", line 199, in _validate_claims
+    self._validate_exp(payload, now, leeway)
+    │    │             │        │    └ 0
+    │    │             │        └ 1681223149
+    │    │             └ {'fresh': True, 'iat': 1681221333, 'jti': '38c21e67-a83d-4cac-aa83-6e0a54dd71cd', 'type': 'access', 'sub': 6, 'nbf': 16812213...
+    │    └ <function PyJWT._validate_exp at 0x000001728E140280>
+    └ <jwt.api_jwt.PyJWT object at 0x000001728E116CB0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\jwt\api_jwt.py", line 237, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired")
+          └ <class 'jwt.exceptions.ExpiredSignatureError'>
+
+jwt.exceptions.ExpiredSignatureError: Signature has expired
+2023-04-11T23:39:23.921162+0700 ERROR An error has been caught in function 'dispatch_request', process 'MainProcess' (19948), thread 'Thread-55 (process_request_thread)' (16572):
+Traceback (most recent call last):
+
+  File "C:\Python310\lib\threading.py", line 966, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000001728C06C820>
+    └ <Thread(Thread-55 (process_request_thread), started daemon 16572)>
+
+  File "C:\Python310\lib\threading.py", line 1009, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x000001728C06C550>
+    └ <Thread(Thread-55 (process_request_thread), started daemon 16572)>
+
+  File "C:\Python310\lib\threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(Thread-55 (process_request_thread), started daemon 16572)>
+    │    │        │    └ (<socket.socket fd=944, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    │        └ <Thread(Thread-55 (process_request_thread), started daemon 16572)>
+    │    └ <bound method ThreadingMixIn.process_request_thread of <werkzeug.serving.ThreadedWSGIServer object at 0x000001728E3B1420>>
+    └ <Thread(Thread-55 (process_request_thread), started daemon 16572)>
+
+  File "C:\Python310\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+    │    │              │        └ ('127.0.0.1', 47898)
+    │    │              └ <socket.socket fd=944, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=(...
+    │    └ <function BaseServer.finish_request at 0x000001728C193E20>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001728E3B1420>
+
+  File "C:\Python310\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    │    │                   │        │               └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001728E3B1420>
+    │    │                   │        └ ('127.0.0.1', 47898)
+    │    │                   └ <socket.socket fd=944, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=(...
+    │    └ <class 'werkzeug.serving.WSGIRequestHandler'>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001728E3B1420>
+
+  File "C:\Python310\lib\socketserver.py", line 747, in __init__
+    self.handle()
+    │    └ <function WSGIRequestHandler.handle at 0x000001728C7E3520>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000001728E3B3310>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\werkzeug\serving.py", line 361, in handle
+    super().handle()
+
+  File "C:\Python310\lib\http\server.py", line 425, in handle
+    self.handle_one_request()
+    │    └ <function BaseHTTPRequestHandler.handle_one_request at 0x000001728C75BE20>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000001728E3B3310>
+
+  File "C:\Python310\lib\http\server.py", line 413, in handle_one_request
+    method()
+    └ <bound method WSGIRequestHandler.run_wsgi of <werkzeug.serving.WSGIRequestHandler object at 0x000001728E3B3310>>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\werkzeug\serving.py", line 333, in run_wsgi
+    execute(self.server.app)
+    │       │    │      └ <werkzeug.debug.DebuggedApplication object at 0x000001728E375BA0>
+    │       │    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001728E3B1420>
+    │       └ <werkzeug.serving.WSGIRequestHandler object at 0x000001728E3B3310>
+    └ <function WSGIRequestHandler.run_wsgi.<locals>.execute at 0x000001728E697D00>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\werkzeug\serving.py", line 322, in execute
+    for data in application_iter:
+                └ <generator object DebuggedApplication.debug_application at 0x000001728E689380>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\werkzeug\debug\__init__.py", line 329, in debug_application
+    app_iter = self.app(environ, start_response)
+               │    │   │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000001728E697EB0>
+               │    │   └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=944>, 'wsgi.errors': <_io.TextIOWr...
+               │    └ <Flask 'run'>
+               └ <werkzeug.debug.DebuggedApplication object at 0x000001728E375BA0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask\app.py", line 2551, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000001728E697EB0>
+           │    │        └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=944>, 'wsgi.errors': <_io.TextIOWr...
+           │    └ <function Flask.wsgi_app at 0x000001728CB63D90>
+           └ <Flask 'run'>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x000001728CB63250>
+               └ <Flask 'run'>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x000001728CB631C0>
+         └ <Flask 'run'>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           │    │           │    │              │    │            └ {}
+           │    │           │    │              │    └ 'todoroute'
+           │    │           │    │              └ <Rule '/api/todo' (OPTIONS, PUT, DELETE, POST, GET, HEAD) -> todoroute>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x000001728E17A9E0>, 'usersroute': <function View.as_view.<locals>.v...
+           │    │           └ <Flask 'run'>
+           │    └ <function Flask.ensure_sync at 0x000001728CB63520>
+           └ <Flask 'run'>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_restful\__init__.py", line 467, in wrapper
+    resp = resource(*args, **kwargs)
+           │         │       └ {}
+           │         └ ()
+           └ <function View.as_view.<locals>.view at 0x000001728E36F2E0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask\views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           │                       │    │                   └ {}
+           │                       │    └ <function Resource.dispatch_request at 0x000001728CB7B130>
+           │                       └ <app.routes.todo.TodoRoute object at 0x000001728E6CF520>
+           └ <Flask 'run'>
+
+> File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_restful\__init__.py", line 582, in dispatch_request
+    resp = meth(*args, **kwargs)
+           │     │       └ {}
+           │     └ ()
+           └ <bound method TodoRoute.get of <app.routes.todo.TodoRoute object at 0x000001728E6CF520>>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_jwt_extended\view_decorators.py", line 153, in decorator
+    verify_jwt_in_request(optional, fresh, refresh, locations, verify_type)
+    │                     │         │      │        │          └ True
+    │                     │         │      │        └ None
+    │                     │         │      └ False
+    │                     │         └ False
+    │                     └ False
+    └ <function verify_jwt_in_request at 0x000001728E159B40>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_jwt_extended\view_decorators.py", line 89, in verify_jwt_in_request
+    jwt_data, jwt_header, jwt_location = _decode_jwt_from_request(
+                                         └ <function _decode_jwt_from_request at 0x000001728E159FC0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_jwt_extended\view_decorators.py", line 323, in _decode_jwt_from_request
+    decoded_token = decode_token(encoded_token, csrf_token)
+                    │            │              └ None
+                    │            └ 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjgxMjI4ODA0LCJqdGkiOiI4ODYxZTFhOC0zYThmLTQ4ZWUtYmY4Yi0yNDg...
+                    └ <function decode_token at 0x000001728E158550>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_jwt_extended\utils.py", line 127, in decode_token
+    return jwt_manager._decode_jwt_from_config(encoded_token, csrf_value, allow_expired)
+           │           │                       │              │           └ False
+           │           │                       │              └ None
+           │           │                       └ 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjgxMjI4ODA0LCJqdGkiOiI4ODYxZTFhOC0zYThmLTQ4ZWUtYmY4Yi0yNDg...
+           │           └ <function JWTManager._decode_jwt_from_config at 0x000001728E159750>
+           └ <flask_jwt_extended.jwt_manager.JWTManager object at 0x000001728E14E020>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_jwt_extended\jwt_manager.py", line 553, in _decode_jwt_from_config
+    return _decode_jwt(**kwargs, allow_expired=allow_expired)
+           │             │                     └ False
+           │             └ {'algorithms': ['HS256'], 'audience': None, 'csrf_value': None, 'encoded_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcm...
+           └ <function _decode_jwt at 0x000001728E143EB0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_jwt_extended\tokens.py", line 94, in _decode_jwt
+    decoded_token = jwt.decode(
+                    │   └ <bound method PyJWT.decode of <jwt.api_jwt.PyJWT object at 0x000001728E116CB0>>
+                    └ <module 'jwt' from 'D:\\JOBS\\pacmann\\ujian\\backend\\venv\\lib\\site-packages\\jwt\\__init__.py'>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\jwt\api_jwt.py", line 168, in decode
+    decoded = self.decode_complete(
+              │    └ <function PyJWT.decode_complete at 0x000001728E10FEB0>
+              └ <jwt.api_jwt.PyJWT object at 0x000001728E116CB0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\jwt\api_jwt.py", line 136, in decode_complete
+    self._validate_claims(
+    │    └ <function PyJWT._validate_claims at 0x000001728E140040>
+    └ <jwt.api_jwt.PyJWT object at 0x000001728E116CB0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\jwt\api_jwt.py", line 199, in _validate_claims
+    self._validate_exp(payload, now, leeway)
+    │    │             │        │    └ 0
+    │    │             │        └ 1681231163
+    │    │             └ {'fresh': True, 'iat': 1681228804, 'jti': '8861e1a8-3a8f-48ee-bf8b-24808137b38e', 'type': 'access', 'sub': 6, 'nbf': 16812288...
+    │    └ <function PyJWT._validate_exp at 0x000001728E140280>
+    └ <jwt.api_jwt.PyJWT object at 0x000001728E116CB0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\jwt\api_jwt.py", line 237, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired")
+          └ <class 'jwt.exceptions.ExpiredSignatureError'>
+
+jwt.exceptions.ExpiredSignatureError: Signature has expired

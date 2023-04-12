@@ -1,0 +1,287 @@
+2023-04-11T21:10:22.487792+0700 ERROR An error has been caught in function 'dispatch_request', process 'MainProcess' (12684), thread 'Thread-3 (process_request_thread)' (8136):
+Traceback (most recent call last):
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\compiler.py", line 2259, in visit_textual_label_reference
+    col = with_cols[element.element]
+          │         │       └ 'todoid desc'
+          │         └ <sqlalchemy.sql.elements._textual_label_reference object at 0x000001C2240A30A0>
+          └ {'ttodos_todoid': Column('todoid', Integer(), table=<ttodos>, primary_key=True, nullable=False), 'ttodos_title': Column('titl...
+
+KeyError: 'todoid desc'
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "C:\Python310\lib\threading.py", line 966, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000001C221CFC820>
+    └ <Thread(Thread-3 (process_request_thread), started daemon 8136)>
+
+  File "C:\Python310\lib\threading.py", line 1009, in _bootstrap_inner
+    self.run()
+    │    └ <function Thread.run at 0x000001C221CFC550>
+    └ <Thread(Thread-3 (process_request_thread), started daemon 8136)>
+
+  File "C:\Python310\lib\threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {}
+    │    │        │    │        └ <Thread(Thread-3 (process_request_thread), started daemon 8136)>
+    │    │        │    └ (<socket.socket fd=812, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=...
+    │    │        └ <Thread(Thread-3 (process_request_thread), started daemon 8136)>
+    │    └ <bound method ThreadingMixIn.process_request_thread of <werkzeug.serving.ThreadedWSGIServer object at 0x000001C2240A1420>>
+    └ <Thread(Thread-3 (process_request_thread), started daemon 8136)>
+
+  File "C:\Python310\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+    │    │              │        └ ('127.0.0.1', 52342)
+    │    │              └ <socket.socket fd=812, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=(...
+    │    └ <function BaseServer.finish_request at 0x000001C221E23E20>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001C2240A1420>
+
+  File "C:\Python310\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    │    │                   │        │               └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001C2240A1420>
+    │    │                   │        └ ('127.0.0.1', 52342)
+    │    │                   └ <socket.socket fd=812, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5000), raddr=(...
+    │    └ <class 'werkzeug.serving.WSGIRequestHandler'>
+    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001C2240A1420>
+
+  File "C:\Python310\lib\socketserver.py", line 747, in __init__
+    self.handle()
+    │    └ <function WSGIRequestHandler.handle at 0x000001C2224A3520>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000001C2240A26E0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\werkzeug\serving.py", line 361, in handle
+    super().handle()
+
+  File "C:\Python310\lib\http\server.py", line 425, in handle
+    self.handle_one_request()
+    │    └ <function BaseHTTPRequestHandler.handle_one_request at 0x000001C22241BE20>
+    └ <werkzeug.serving.WSGIRequestHandler object at 0x000001C2240A26E0>
+
+  File "C:\Python310\lib\http\server.py", line 413, in handle_one_request
+    method()
+    └ <bound method WSGIRequestHandler.run_wsgi of <werkzeug.serving.WSGIRequestHandler object at 0x000001C2240A26E0>>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\werkzeug\serving.py", line 333, in run_wsgi
+    execute(self.server.app)
+    │       │    │      └ <werkzeug.debug.DebuggedApplication object at 0x000001C224065BA0>
+    │       │    └ <werkzeug.serving.ThreadedWSGIServer object at 0x000001C2240A1420>
+    │       └ <werkzeug.serving.WSGIRequestHandler object at 0x000001C2240A26E0>
+    └ <function WSGIRequestHandler.run_wsgi.<locals>.execute at 0x000001C2240AFAC0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\werkzeug\serving.py", line 322, in execute
+    for data in application_iter:
+                └ <generator object DebuggedApplication.debug_application at 0x000001C2240CCBA0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\werkzeug\debug\__init__.py", line 329, in debug_application
+    app_iter = self.app(environ, start_response)
+               │    │   │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000001C2240AFA30>
+               │    │   └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=812>, 'wsgi.errors': <_io.TextIOWr...
+               │    └ <Flask 'run'>
+               └ <werkzeug.debug.DebuggedApplication object at 0x000001C224065BA0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask\app.py", line 2551, in __call__
+    return self.wsgi_app(environ, start_response)
+           │    │        │        └ <function WSGIRequestHandler.run_wsgi.<locals>.start_response at 0x000001C2240AFA30>
+           │    │        └ {'wsgi.version': (1, 0), 'wsgi.url_scheme': 'http', 'wsgi.input': <_io.BufferedReader name=812>, 'wsgi.errors': <_io.TextIOWr...
+           │    └ <function Flask.wsgi_app at 0x000001C222853D90>
+           └ <Flask 'run'>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask\app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+               │    └ <function Flask.full_dispatch_request at 0x000001C222853250>
+               └ <Flask 'run'>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask\app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+         │    └ <function Flask.dispatch_request at 0x000001C2228531C0>
+         └ <Flask 'run'>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           │    │           │    │              │    │            └ {}
+           │    │           │    │              │    └ 'todoroute'
+           │    │           │    │              └ <Rule '/api/todo' (HEAD, OPTIONS, DELETE, GET, PUT, POST) -> todoroute>
+           │    │           │    └ {'static': <function Flask.__init__.<locals>.<lambda> at 0x000001C223E6A9E0>, 'usersroute': <function View.as_view.<locals>.v...
+           │    │           └ <Flask 'run'>
+           │    └ <function Flask.ensure_sync at 0x000001C222853520>
+           └ <Flask 'run'>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_restful\__init__.py", line 467, in wrapper
+    resp = resource(*args, **kwargs)
+           │         │       └ {}
+           │         └ ()
+           └ <function View.as_view.<locals>.view at 0x000001C22405F2E0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask\views.py", line 107, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           │                       │    │                   └ {}
+           │                       │    └ <function Resource.dispatch_request at 0x000001C22286B130>
+           │                       └ <app.routes.todo.TodoRoute object at 0x000001C2240A2EF0>
+           └ <Flask 'run'>
+
+> File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_restful\__init__.py", line 582, in dispatch_request
+    resp = meth(*args, **kwargs)
+           │     │       └ {}
+           │     └ ()
+           └ <bound method TodoRoute.get of <app.routes.todo.TodoRoute object at 0x000001C2240A2EF0>>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\flask_jwt_extended\view_decorators.py", line 154, in decorator
+    return current_app.ensure_sync(fn)(*args, **kwargs)
+           │                       │    │       └ {}
+           │                       │    └ (<app.routes.todo.TodoRoute object at 0x000001C2240A2EF0>,)
+           │                       └ <function TodoRoute.get at 0x000001C223E4AD40>
+           └ <Flask 'run'>
+
+  File "D:\JOBS\pacmann\ujian\backend\app\routes\todo.py", line 14, in get
+    data_todos = list(x.json() for x in todos)
+                                        └ <flask_sqlalchemy.query.Query object at 0x000001C2240A33D0>
+
+  File "D:\JOBS\pacmann\ujian\backend\app\routes\todo.py", line 14, in <genexpr>
+    data_todos = list(x.json() for x in todos)
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\orm\query.py", line 2841, in __iter__
+    result = self._iter()
+             │    └ <function Query._iter at 0x000001C223BD95A0>
+             └ <flask_sqlalchemy.query.Query object at 0x000001C2240A33D0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\orm\query.py", line 2855, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+            │                  │    │      │      │    │       └ <function Session.execute at 0x000001C223C56E60>
+            │                  │    │      │      │    └ <sqlalchemy.orm.session.Session object at 0x000001C2240A3250>
+            │                  │    │      │      └ <flask_sqlalchemy.query.Query object at 0x000001C2240A33D0>
+            │                  │    │      └ ~_T
+            │                  │    └ <class 'sqlalchemy.engine.result.Result'>
+            │                  └ ~_T
+            └ typing.Union
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\orm\session.py", line 2229, in execute
+    return self._execute_internal(
+           │    └ <function Session._execute_internal at 0x000001C223C56DD0>
+           └ <sqlalchemy.orm.session.Session object at 0x000001C2240A3250>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\orm\session.py", line 2124, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                   │      │                 └ <classmethod(<function AbstractORMCompileState.orm_execute_statement at 0x000001C223B128C0>)>
+                   │      └ <class 'sqlalchemy.orm.context.ORMSelectCompileState'>
+                   └ typing.Any
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\orm\context.py", line 253, in orm_execute_statement
+    result = conn.execute(
+             │    └ <function Connection.execute at 0x000001C22312DFC0>
+             └ <sqlalchemy.engine.base.Connection object at 0x000001C2240A3580>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1414, in execute
+    return meth(
+           └ <bound method ClauseElement._execute_on_connection of <sqlalchemy.sql.selectable.Select object at 0x000001C2240A36D0>>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 486, in _execute_on_connection
+    return connection._execute_clauseelement(
+           │          └ <function Connection._execute_clauseelement at 0x000001C22312E290>
+           └ <sqlalchemy.engine.base.Connection object at 0x000001C2240A3580>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1630, in _execute_clauseelement
+    compiled_sql, extracted_params, cache_hit = elem._compile_w_cache(
+                                                │    └ <function ClauseElement._compile_w_cache at 0x000001C222F577F0>
+                                                └ <sqlalchemy.sql.selectable.Select object at 0x000001C2240A36D0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 652, in _compile_w_cache
+    compiled_sql = self._compiler(
+                   │    └ <function CompilerElement._compiler at 0x000001C222F56B00>
+                   └ <sqlalchemy.sql.selectable.Select object at 0x000001C2240A36D0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 291, in _compiler
+    return dialect.statement_compiler(dialect, self, **kw)
+           │       │                  │        │       └ {'cache_key': CacheKey(key=('0', <class 'sqlalchemy.sql.selectable.Select'>, '_raw_columns', ((Table('ttodos', MetaData(), Co...
+           │       │                  │        └ <sqlalchemy.sql.selectable.Select object at 0x000001C2240A36D0>
+           │       │                  └ <sqlalchemy.dialects.postgresql.psycopg2.PGDialect_psycopg2 object at 0x000001C223E3D330>
+           │       └ <class 'sqlalchemy.dialects.postgresql.base.PGCompiler'>
+           └ <sqlalchemy.dialects.postgresql.psycopg2.PGDialect_psycopg2 object at 0x000001C223E3D330>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\compiler.py", line 1269, in __init__
+    Compiled.__init__(self, dialect, statement, **kwargs)
+    │        │        │     │        │            └ {'schema_translate_map': None}
+    │        │        │     │        └ <sqlalchemy.sql.selectable.Select object at 0x000001C2240A36D0>
+    │        │        │     └ <sqlalchemy.dialects.postgresql.psycopg2.PGDialect_psycopg2 object at 0x000001C223E3D330>
+    │        │        └ <sqlalchemy.dialects.postgresql.base.PGCompiler object at 0x000001C2240A3F70>
+    │        └ <function Compiled.__init__ at 0x000001C2230AD3F0>
+    └ <class 'sqlalchemy.sql.compiler.Compiled'>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\compiler.py", line 710, in __init__
+    self.string = self.process(self.statement, **compile_kwargs)
+    │    │        │    │       │    │            └ immutabledict({})
+    │    │        │    │       │    └ <sqlalchemy.sql.selectable.Select object at 0x000001C2240A36D0>
+    │    │        │    │       └ <sqlalchemy.dialects.postgresql.base.PGCompiler object at 0x000001C2240A3F70>
+    │    │        │    └ <function Compiled.process at 0x000001C2230AD750>
+    │    │        └ <sqlalchemy.dialects.postgresql.base.PGCompiler object at 0x000001C2240A3F70>
+    │    └ ''
+    └ <sqlalchemy.dialects.postgresql.base.PGCompiler object at 0x000001C2240A3F70>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\compiler.py", line 755, in process
+    return obj._compiler_dispatch(self, **kwargs)
+           │   │                  │       └ {}
+           │   │                  └ <sqlalchemy.dialects.postgresql.base.PGCompiler object at 0x000001C2240A3F70>
+           │   └ <function Visitable._generate_compiler_dispatch.<locals>._compiler_dispatch at 0x000001C22307CAF0>
+           └ <sqlalchemy.sql.selectable.Select object at 0x000001C2240A36D0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\visitors.py", line 143, in _compiler_dispatch
+    return meth(self, **kw)  # type: ignore  # noqa: E501
+           │    │       └ {}
+           │    └ <sqlalchemy.sql.selectable.Select object at 0x000001C2240A36D0>
+           └ <bound method SQLCompiler.visit_select of <sqlalchemy.dialects.postgresql.base.PGCompiler object at 0x000001C2240A3F70>>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\compiler.py", line 4551, in visit_select
+    text = self._compose_select_body(
+           │    └ <function SQLCompiler._compose_select_body at 0x000001C2230CB2E0>
+           └ <sqlalchemy.dialects.postgresql.base.PGCompiler object at 0x000001C2240A3F70>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\compiler.py", line 4734, in _compose_select_body
+    text += self.order_by_clause(select, **kwargs)
+    │       │    │               │         └ {'within_columns_clause': False, 'ambiguous_table_name_map': {}}
+    │       │    │               └ <sqlalchemy.sql.selectable.Select object at 0x000001C2242626E0>
+    │       │    └ <function SQLCompiler.order_by_clause at 0x000001C2230CB640>
+    │       └ <sqlalchemy.dialects.postgresql.base.PGCompiler object at 0x000001C2240A3F70>
+    └ 'SELECT ttodos.todoid AS ttodos_todoid, ttodos.title AS ttodos_title, ttodos."desc" AS ttodos_desc, ttodos.status AS ttodos_s...
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\compiler.py", line 4843, in order_by_clause
+    order_by = self._generate_delimited_list(
+               │    └ <function SQLCompiler._generate_delimited_list at 0x000001C2230AFC70>
+               └ <sqlalchemy.dialects.postgresql.base.PGCompiler object at 0x000001C2240A3F70>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\compiler.py", line 2513, in _generate_delimited_list
+    return separator.join(
+           │         └ <method 'join' of 'str' objects>
+           └ ', '
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\compiler.py", line 2513, in <genexpr>
+    return separator.join(
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\compiler.py", line 2515, in <genexpr>
+    for s in (c._compiler_dispatch(self, **kw) for c in elements)
+              │ │                  │       │       │    └ <module 'sqlalchemy.sql.elements' from 'D:\\JOBS\\pacmann\\ujian\\backend\\venv\\lib\\site-packages\\sqlalchemy\\sql\\element...
+              │ │                  │       │       └ <sqlalchemy.sql.elements._textual_label_reference object at 0x000001C2240A30A0>
+              │ │                  │       └ {'within_columns_clause': False, 'ambiguous_table_name_map': {}}
+              │ │                  └ <sqlalchemy.dialects.postgresql.base.PGCompiler object at 0x000001C2240A3F70>
+              │ └ <function Visitable._generate_compiler_dispatch.<locals>._compiler_dispatch at 0x000001C222F693F0>
+              └ <sqlalchemy.sql.elements._textual_label_reference object at 0x000001C2240A30A0>
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\visitors.py", line 143, in _compiler_dispatch
+    return meth(self, **kw)  # type: ignore  # noqa: E501
+           │    │       └ {'within_columns_clause': False, 'ambiguous_table_name_map': {}}
+           │    └ <sqlalchemy.sql.elements._textual_label_reference object at 0x000001C2240A30A0>
+           └ <bound method SQLCompiler.visit_textual_label_reference of <sqlalchemy.dialects.postgresql.base.PGCompiler object at 0x000001...
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\compiler.py", line 2261, in visit_textual_label_reference
+    coercions._no_text_coercion(
+    │         └ <function _no_text_coercion at 0x000001C222D38C10>
+    └ <module 'sqlalchemy.sql.coercions' from 'D:\\JOBS\\pacmann\\ujian\\backend\\venv\\lib\\site-packages\\sqlalchemy\\sql\\coerci...
+
+  File "D:\JOBS\pacmann\ujian\backend\venv\lib\site-packages\sqlalchemy\sql\coercions.py", line 602, in _no_text_coercion
+    raise exc_cls(
+          └ <class 'sqlalchemy.exc.CompileError'>
+
+sqlalchemy.exc.CompileError: Can't resolve label reference for ORDER BY / GROUP BY / DISTINCT etc. Textual SQL expression 'todoid desc' should be explicitly declared as text('todoid desc')
