@@ -4,7 +4,8 @@ Pacmann Backend
 
 ## Description
 
-Aplikasi backend sebagai service untuk jembatan ke database dalam proses menambah user, login user, menambah/menghapus/mengubah data dan status todo
+Aplikasi backend sebagai service untuk jembatan ke database dalam proses menambah user, login user, menambah/menghapus/mengubah data dan status todo.
+Aplikasi terkait adalah Pacmann Frontend yang dapat dilihat di link berikut : https://github.com/VictorSilalahi/pacmann-frontend
 
 ## Getting Started
 
