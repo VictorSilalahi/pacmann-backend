@@ -66,6 +66,7 @@ python run.py
 
 * run.py ---> file utama untuk menjalankan aplikasi
 * app\logs ---> folder log pencatatan error yang terjadi pada saat aplikasi berjalan
+* app\utils ---> folder untuk koneksi ke database dan pengaturan logger
 * app\models ---> folder untuk menyimpan skema tabel dalam database, tabel-tabel tersebut dapat dilihat di todo.py dan user.py
 * app\routes ---> folder untuk konfigurasi routing endpoint, seluruh link endpoint dapat dilihat di file todo.py, todostatus.py, user.py dan users.py
 * db ---> folder untuk menyimpan backup database postgresql
